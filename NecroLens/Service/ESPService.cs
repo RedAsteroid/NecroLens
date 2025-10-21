@@ -217,7 +217,7 @@ public class ESPService : IDisposable
 
                         var espObj = new ESPObject(obj, mobInfo);
                         
-                        if (obj.BaseId == DataIds.GoldChest 
+                        if (obj.DataId == DataIds.GoldChest 
                             && DungeonService.FloorDetails.DoubleChests.TryGetValue(obj.EntityId, out var value))
                         {
                             espObj.ContainingPomander = value;
