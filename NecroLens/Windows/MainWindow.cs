@@ -147,26 +147,27 @@ public class MainWindow : Window, IDisposable
         ImGui.BeginGroup();
         ImGui.Text(Strings.MainWindow_CurrentFloorEffects_Title);
         ImGui.Indent(15);
-        ImGui.TextColored(effects.Contains(Pomander.Affluence) ? colorWhite : colorGrey,
+        // 补充魔陶器触发
+        ImGui.TextColored(effects.Contains(Pomander.Affluence) || effects.Contains(Pomander.AffluenceProtomander) ? colorWhite : colorGrey,
                           Strings.MainWindow_CurrentFloorEffects_Affluence);
         if (DungeonService.FloorDetails.IsNextFloorWith(Pomander.Affluence))
             DrawNextFloorMark();
 
-        ImGui.TextColored(effects.Contains(Pomander.Flight) ? colorWhite : colorGrey,
+        ImGui.TextColored(effects.Contains(Pomander.Flight) || effects.Contains(Pomander.FlightProtomander) ? colorWhite : colorGrey,
                           Strings.MainWindow_CurrentFloorEffects_Flight);
         if (DungeonService.FloorDetails.IsNextFloorWith(Pomander.Flight))
             DrawNextFloorMark();
 
-        ImGui.TextColored(effects.Contains(Pomander.Alteration) ? colorWhite : colorGrey,
+        ImGui.TextColored(effects.Contains(Pomander.Alteration) || effects.Contains(Pomander.AlterationProtomander) ? colorWhite : colorGrey,
                           Strings.MainWindow_CurrentFloorEffects_Alteration);
         if (DungeonService.FloorDetails.IsNextFloorWith(Pomander.Alteration))
             DrawNextFloorMark();
 
-        ImGui.TextColored(effects.Contains(Pomander.Safety) ? colorWhite : colorGrey,
+        ImGui.TextColored(effects.Contains(Pomander.Safety) || effects.Contains(Pomander.SafetyProtomander) ? colorWhite : colorGrey,
                           Strings.MainWindow_CurrentFloorEffects_Safety);
-        ImGui.TextColored(effects.Contains(Pomander.Sight) ? colorWhite : colorGrey,
+        ImGui.TextColored(effects.Contains(Pomander.Sight) || effects.Contains(Pomander.SightProtomander) ? colorWhite : colorGrey,
                           Strings.MainWindow_CurrentFloorEffects_Sight);
-        ImGui.TextColored(effects.Contains(Pomander.Fortune) ? colorWhite : colorGrey,
+        ImGui.TextColored(effects.Contains(Pomander.Fortune) || effects.Contains(Pomander.FortuneProtomander) ? colorWhite : colorGrey,
                           Strings.MainWindow_CurrentFloorEffects_Fortune);
         ImGui.EndGroup();
     }
@@ -191,7 +192,7 @@ public class MainWindow : Window, IDisposable
         ImGui.SameLine();
         ImGui.BeginGroup();
 
-        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetColumnWidth() - 160);
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetColumnWidth() - 170); // 适配中文大小
         var showAggro = Config.ShowMobViews;
         if (ImGui.Checkbox(Strings.MainWindow_ShowAggro, ref showAggro))
         {
@@ -200,10 +201,10 @@ public class MainWindow : Window, IDisposable
         }
 
         ImGui.SameLine();
-        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetColumnWidth() - 20);
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetColumnWidth() - 30); // 适配中文大小
         if (ImGuiComponents.IconButton(FontAwesomeIcon.Cog)) Plugin.ShowConfigWindow();
 
-        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetColumnWidth() - 160);
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetColumnWidth() - 170); // 适配中文大小
         var openChests = Config.OpenChests;
         if (ImGui.Checkbox(Strings.MainWindow_OpenChests, ref openChests))
         {
@@ -215,7 +216,7 @@ public class MainWindow : Window, IDisposable
         HelpMarker(Strings.MainWindow_OpenChests_Help);
 
         ImGui.SameLine();
-        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetColumnWidth() - 20);
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetColumnWidth() - 30); // 适配中文大小
         if (ImGuiComponents.IconButton(FontAwesomeIcon.Toolbox)) DungeonService.TryNearestOpenChest();
         if (ImGui.IsItemHovered())
         {
