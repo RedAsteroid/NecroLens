@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Dalamud.Game.Command;
 using NecroLens.Data;
 
@@ -32,7 +32,7 @@ public class PluginCommands : IDisposable
         CommandManager.AddHandler("/pomander",
             new CommandInfo((_, args) => DungeonService.OnPomanderCommand(args))
             {
-                HelpMessage = "Try to use the pomander with given name",
+                HelpMessage = "使用给定名称的魔陶器/魔科学器",
                 ShowInHelp = true
             });
     }

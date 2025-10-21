@@ -58,6 +58,7 @@ public class ConfigWindow() : Window(Strings.ConfigWindow_Title, ImGuiWindowFlag
                             ClientLanguage.French => CultureInfo.GetCultureInfo("fr"),
                             ClientLanguage.German => CultureInfo.GetCultureInfo("de"),
                             ClientLanguage.Japanese => CultureInfo.GetCultureInfo("ja"),
+                            ClientLanguage.ChineseSimplified => CultureInfo.GetCultureInfo("zh"),
                             _ => CultureInfo.GetCultureInfo("en")
                         };
                     }
@@ -73,7 +74,7 @@ public class ConfigWindow() : Window(Strings.ConfigWindow_Title, ImGuiWindowFlag
         ImGui.Spacing();
         ImGui.SameLine();
         
-        if (ImGui.Button("Want to help with localization?"))
+        if (ImGui.Button("想要帮助本地化？"))
             Process.Start(new ProcessStartInfo
                               { FileName = "https://crowdin.com/project/necrolens", UseShellExecute = true });
         if (ImGui.BeginTabBar("MyTabBar", ImGuiTabBarFlags.None))
@@ -109,7 +110,7 @@ public class ConfigWindow() : Window(Strings.ConfigWindow_Title, ImGuiWindowFlag
     private void DrawDebugTab()
     {
         var optInCollection = conf.OptInDataCollection;
-        if (ImGui.Checkbox("Opt-In Data Collection", ref optInCollection))
+        if (ImGui.Checkbox("选择加入数据收集 (Opt-In Data Collection)", ref optInCollection))
         {
             conf.OptInDataCollection = optInCollection;
             if (conf.OptInDataCollection && conf.UniqueId == null)
@@ -120,10 +121,10 @@ public class ConfigWindow() : Window(Strings.ConfigWindow_Title, ImGuiWindowFlag
         }
 
         ImGui.Indent(15);
-        ImGui.Text("Help me improve NecroLens by enabling data collection.\n" +
-                   "This will send information about every enemy and some other objects anonymously to my server.\n" +
-                   "It contains only enemy and object id's and names per floor and a \'party-id\' for separation.\n\n" +
-                   "Absolutely no information linking to any players or accounts will be collected.");
+        ImGui.Text("通过启用数据收集功能，帮助我改进 NecroLens。\n" +
+                   "这将以匿名方式向我的服务器发送每个敌人和其他对象的信息。\n" +
+                   "每个楼层只包含敌人和物体的 ID 和名称，以及一个用于分隔的 party-id。\n\n" +
+                   "绝对不会收集与任何玩家或账户相关的信息。");
         ImGui.Unindent(15);
         
         ImGui.Separator();

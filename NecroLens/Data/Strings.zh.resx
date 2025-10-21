@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConfigWindow_Tab_General" xml:space="preserve">
-    <value>General</value>
+    <value>常规</value>
   </data>
   <data name="ConfigWindow_Tab_ESPSettings" xml:space="preserve">
     <value>ESP 设置</value>
@@ -130,10 +130,11 @@
     <value>开启宝箱</value>
   </data>
   <data name="ConfigWindow_ChestsTab_OpenChests_Details" xml:space="preserve">
-    <value>当你位于宝箱的互动范围内，插件将尝试自动为你开启一次宝箱！</value>
+    <value>当您位于宝箱的交互范围内，
+插件将尝试自动为您开启一次宝箱！</value>
   </data>
   <data name="ConfigWindow_ChestsTab_OpenFollowingChests" xml:space="preserve">
-    <value>开启以下宝箱：</value>
+    <value>开启以下宝箱:</value>
   </data>
   <data name="ConfigWindow_ChestsTab_OpenFollowingChests_Bronze" xml:space="preserve">
     <value>铜宝箱</value>
@@ -151,7 +152,7 @@
     <value>开启不安全的宝箱</value>
   </data>
   <data name="ConfigWindow_ChestsTab_OpenUnsafeChests_Details" xml:space="preserve">
-    <value>此选项将强制开启当前楼层中可能是拟态怪的宝箱</value>
+    <value>强制开启当前楼层中可能是拟态怪的宝箱</value>
   </data>
   <data name="ConfigWindow_Title" xml:space="preserve">
     <value>NecroLens 设置</value>
@@ -160,7 +161,7 @@
     <value>显示玩家判定点</value>
   </data>
   <data name="ConfigWindow_ESPTab_ShowPlayerDot_Details" xml:space="preserve">
-    <value>以一个小点作为你的碰撞体积显示</value>
+    <value>绘制一个小点作为玩家的碰撞体积显示</value>
   </data>
   <data name="ConfigWindow_ESPTab_ShowAggroRange" xml:space="preserve">
     <value>显示引战范围</value>
@@ -170,10 +171,10 @@
 听觉怪物也有碰撞体积。</value>
   </data>
   <data name="ConfigWindow_ESPTab_ShowAggroRange_Proximity_and_Sight" xml:space="preserve">
-    <value>感应与视觉范围</value>
+    <value>感应与视觉怪物</value>
   </data>
   <data name="ConfigWindow_ESPTab_ShowAggroRange_Sound" xml:space="preserve">
-    <value>听觉范围</value>
+    <value>听觉怪物</value>
   </data>
   <data name="ConfigWindow_ESPTab_ShowPatrolArrow" xml:space="preserve">
     <value>显示巡逻怪物箭头</value>
@@ -182,22 +183,22 @@
     <value>绘制一个指示箭头用于指示巡逻怪物的运动方向。</value>
   </data>
   <data name="ConfigWindow_ESPTab_ShowCofferInteractionRange" xml:space="preserve">
-    <value>显示宝箱的可互动范围</value>
+    <value>显示宝箱的可交互范围</value>
   </data>
   <data name="ConfigWindow_ESPTab_ShowCofferInteractionRange_Details" xml:space="preserve">
-    <value>当你接近宝箱时，绘制一个光圈来显示你能开启宝箱的最大距离。</value>
+    <value>当您接近宝箱时，绘制一个光圈来显示您能开启宝箱的最大距离。</value>
   </data>
   <data name="ConfigWindow_ESPTab_HighlightObjects" xml:space="preserve">
-    <value>玩家接近时高亮以下对象：</value>
+    <value>玩家接近时高亮以下对象:</value>
   </data>
   <data name="ConfigWindow_ESPTab_HighlightObjects_TreasureChests" xml:space="preserve">
     <value>宝箱</value>
   </data>
   <data name="ConfigWindow_ESPTab_HighlightObjects_Passage" xml:space="preserve">
-    <value>传送装置</value>
+    <value>下层转移</value>
   </data>
   <data name="ConfigWindow_ESPTab_HighlightTreasureChests" xml:space="preserve">
-    <value>在叠加层中显示以下宝箱：</value>
+    <value>在叠加层中显示以下宝箱:</value>
   </data>
   <data name="ConfigWindow_ESPTab_HighlightTreasureChests_Bronze" xml:space="preserve">
     <value>铜宝箱</value>
@@ -215,8 +216,9 @@
     <value>深层迷宫内自动开启主窗口</value>
   </data>
   <data name="ConfigWindow_GeneralTab_AutomaticallyOpen_Details" xml:space="preserve">
-    <value>当你进入深层迷宫时开启插件主窗口。
-此窗口可为你显示一些便捷信息，帮助你快速访问插件设置。</value>
+    <value>当您进入深层迷宫时开启插件主窗口。 
+此窗口可为您显示一些便捷信息，
+帮助您快速访问插件设置。</value>
   </data>
   <data name="ConfigWindow_GeneralTab_EnableOverlay" xml:space="preserve">
     <value>启用 ESP 叠加层</value>
@@ -235,12 +237,11 @@
   </data>
   <data name="ConfigWindow_GeneralTab_OpenChests_Details" xml:space="preserve">
     <value>实验性功能
-当你位于宝箱的互动范围内，将自动开启宝箱。
-默认情况下，此功能不会开启可能是拟态怪的宝箱！
+当您位于宝箱的交互范围内，将自动开启宝箱。
+默认情况下，此功能不会打开可能是拟态怪的宝箱！
 
-此功能可能会导致你被卡在宝箱旁边！
-如果发生这种情况，请禁用此功能。
-</value>
+此功能可能会导致您被卡在宝箱旁边！
+如果发生这种情况，请禁用此功能。</value>
   </data>
   <data name="PluginCommands_OpenOverlay_Help" xml:space="preserve">
     <value>开启 插件主窗口</value>
@@ -249,7 +250,7 @@
     <value>开启 插件设置窗口</value>
   </data>
   <data name="MainWindow_TrapStatus_Title" xml:space="preserve">
-    <value>陷阱：</value>
+    <value>陷阱:</value>
   </data>
   <data name="MainWindow_TrapStatus_Active" xml:space="preserve">
     <value>活跃状态</value>
@@ -261,7 +262,7 @@
     <value>安全状态</value>
   </data>
   <data name="MainWindow_PassageStatus_Title" xml:space="preserve">
-    <value>传送装置：</value>
+    <value>下层转移:</value>
   </data>
   <data name="MainWindow_PassageStatus_Open" xml:space="preserve">
     <value>开启</value>
@@ -270,13 +271,13 @@
     <value>关闭</value>
   </data>
   <data name="MainWindow_TimeSet_Title" xml:space="preserve">
-    <value>计时：</value>
+    <value>计时:</value>
   </data>
   <data name="MainWindow_NextFloorMark_ActiveNextFloor" xml:space="preserve">
     <value>下一层生效</value>
   </data>
   <data name="MainWindow_CurrentFloorEffects_Title" xml:space="preserve">
-    <value>本层发动的魔法效果：</value>
+    <value>本层发动的道具效果:</value>
   </data>
   <data name="MainWindow_CurrentFloorEffects_Affluence" xml:space="preserve">
     <value>宝箱增加</value>
@@ -297,10 +298,10 @@
     <value>运气上升</value>
   </data>
   <data name="MainWindow_Floor" xml:space="preserve">
-    <value>层数： {0}</value>
+    <value>层数: {0}</value>
   </data>
   <data name="MainWindow_Respawns" xml:space="preserve">
-    <value>怪物重生时间： {0}</value>
+    <value>怪物重生时间: {0}</value>
   </data>
   <data name="MainWindow_ShowAggro" xml:space="preserve">
     <value>显示引战范围</value>
@@ -309,10 +310,9 @@
     <value>开启宝箱</value>
   </data>
   <data name="MainWindow_OpenChests_Help" xml:space="preserve">
-    <value>根据你的设置切换是否自动开启宝箱。
+    <value>根据您的设置切换是否自动开启宝箱。 
 
-重要提醒：
-如果你被卡在一个宝箱附近无法移动，请禁用此选项！</value>
+重要提醒: 如果您被卡在一个宝箱附近无法移动，请禁用此选项！</value>
   </data>
   <data name="Traps_Landmine" xml:space="preserve">
     <value>爆炸陷阱</value>
@@ -354,50 +354,50 @@
     <value>陷阱</value>
   </data>
   <data name="PluginCommands_OpenChest_Help" xml:space="preserve">
-    <value>Try top open a Chest near to you.</value>
+    <value>尝试开启您附近的宝箱</value>
   </data>
   <data name="MainWindow_OpenChestButton_Help" xml:space="preserve">
-    <value>Try to open the nearest chest to you.</value>
+    <value>尝试开启距离您最近的宝箱</value>
   </data>
   <data name="ConfigWindow_Tab_Extras" xml:space="preserve">
-    <value>Extras</value>
+    <value>额外</value>
   </data>
   <data name="ConfigWindow_ExtrasTab_ShowDebugInformation" xml:space="preserve">
-    <value>Show Debug Information</value>
+    <value>显示 Debug 信息</value>
   </data>
   <data name="ConfigWindow_ExtrasTab_ShowDebugInformation_Details" xml:space="preserve">
-    <value>Show the ID for elements. 
-Please turn this on before you submit a bug report. 
-It helps me to identify problems faster.</value>
+    <value>显示元素的 ID。
+请在提交错误报告前打开此选项。
+这有助于我更快地发现问题。</value>
   </data>
   <data name="ConfigWindow_ESPTab_HighlightObjects_Votife" xml:space="preserve">
-    <value>Vestige</value>
+    <value>祭坛</value>
   </data>
   <data name="Traps_Fae_Trap" xml:space="preserve">
-    <value>Fae Trap</value>
+    <value>妖灵陷阱</value>
   </data>
   <data name="ConfigWindow_Language" xml:space="preserve">
-      <value>语言:</value>
+    <value>语言:</value>
   </data>
   <data name="ConfigWindow_Language_en" xml:space="preserve">
-      <value>英语</value>
+    <value>英语</value>
   </data>
   <data name="ConfigWindow_Language_de" xml:space="preserve">
-      <value>德语</value>
+    <value>德语</value>
   </data>
   <data name="ConfigWindow_Language_fr" xml:space="preserve">
-      <value>法语</value>
+    <value>法语</value>
   </data>
   <data name="ConfigWindow_Language_ja" xml:space="preserve">
-      <value>日语</value>
+    <value>日语</value>
   </data>
   <data name="ConfigWindow_Language_ko" xml:space="preserve">
-      <value>韩语</value>
+    <value>韩语</value>
   </data>
   <data name="ConfigWindow_Language_zh" xml:space="preserve">
-      <value>中文</value>
+    <value>中文</value>
   </data>
   <data name="ConfigWindow_Language_default" xml:space="preserve">
-      <value>客户端语言</value>
+    <value>客户端语言</value>
   </data>
 </root>
