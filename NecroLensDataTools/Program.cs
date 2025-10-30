@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using ClosedXML.Excel;
 using NecroLens.Model;
@@ -9,9 +9,10 @@ namespace NecroLensDataTools;
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
 public class DatabaseConverter
 {
-       public static void Main(String[] args)
+    public static void Main(String[] args)
     {
-        var inFile = Path.Combine(Directory.GetCurrentDirectory(), "../../../../Data/deepDungeonMobDatabase.xlsx");
+        var projectRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\.."));
+        var inFile = Path.Combine(projectRoot, "NecroLensDataTools", "Data", "deepDungeonMobDatabase.xlsx");
         var csvInfo = new List<DbNpcName>();
 
         using (var workbook = new XLWorkbook(inFile))
@@ -27,11 +28,11 @@ public class DatabaseConverter
                     HoH = row.Cell(3).GetValue<bool?>(),
                     EO = row.Cell(4).GetValue<bool?>(),
                     PT = row.Cell(5).GetValue<bool?>(),
-                    Id = int.Parse(row.Cell(6).GetValue<string>()), 
-                    
+                    Id = int.Parse(row.Cell(6).GetValue<string>()),
+
                     Aggro = row.Cell(7).GetValue<string>(),
                     DangerLevel = row.Cell(8).GetValue<string>(),
-                    
+
                     Patrol = row.Cell(9).GetValue<bool?>(),
                     BossOrAdd = row.Cell(10).GetValue<bool?>(),
                     Special = row.Cell(11).GetValue<bool?>()
@@ -59,8 +60,8 @@ public class DatabaseConverter
                 mobList.Add(mob);
             }
         }
-        
-        var outFile = Path.Combine(Directory.GetCurrentDirectory(), "../../../../../NecroLens/Data/allMobs.json");
+
+        var outFile = Path.Combine(projectRoot, "NecroLens", "Data", "allMobs.json");
         File.WriteAllText(outFile, JsonSerializer.Serialize(mobList));
     }
 }

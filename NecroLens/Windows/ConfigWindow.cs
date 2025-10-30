@@ -58,7 +58,7 @@ public class ConfigWindow() : Window(Strings.ConfigWindow_Title, ImGuiWindowFlag
                             ClientLanguage.French => CultureInfo.GetCultureInfo("fr"),
                             ClientLanguage.German => CultureInfo.GetCultureInfo("de"),
                             ClientLanguage.Japanese => CultureInfo.GetCultureInfo("ja"),
-                            ClientLanguage.ChineseSimplified => CultureInfo.GetCultureInfo("zh"),
+                            (ClientLanguage)4 => CultureInfo.GetCultureInfo("zh"),
                             _ => CultureInfo.GetCultureInfo("en")
                         };
                     }

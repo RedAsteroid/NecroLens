@@ -1,4 +1,4 @@
-﻿#undef DEBUG
+#undef DEBUG
 
 
 using System.Diagnostics.CodeAnalysis;
@@ -67,6 +67,7 @@ public sealed class NecroLens : IDalamudPlugin
                 ClientLanguage.French => CultureInfo.GetCultureInfo("fr"),
                 ClientLanguage.German => CultureInfo.GetCultureInfo("de"),
                 ClientLanguage.Japanese => CultureInfo.GetCultureInfo("ja"),
+                (ClientLanguage)4 => CultureInfo.GetCultureInfo("zh"),
                 _ => CultureInfo.GetCultureInfo("en")
             };
         }
