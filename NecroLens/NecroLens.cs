@@ -7,6 +7,7 @@ using Dalamud.Game;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using ECommons;
+using NecroLens.Data;
 using NecroLens.Model;
 using NecroLens.Service;
 using NecroLens.Windows;
@@ -40,6 +41,28 @@ public sealed class NecroLens : IDalamudPlugin
 
         Config = PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
 
+        PluginLog.Debug($"Language config: \"{Config.Language}\", Client: {ClientState.ClientLanguage}");
+
+        if (Config.Language == "")
+        {
+            CultureInfo.DefaultThreadCurrentUICulture = ClientState.ClientLanguage switch
+            {
+                ClientLanguage.French => CultureInfo.GetCultureInfo("fr"),
+                ClientLanguage.German => CultureInfo.GetCultureInfo("de"),
+                ClientLanguage.Japanese => CultureInfo.GetCultureInfo("ja"),
+                (ClientLanguage)4 => CultureInfo.GetCultureInfo("zh"),
+                _ => CultureInfo.GetCultureInfo("en")
+            };
+        }
+        else
+        {
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo(Config.Language);
+        }
+
+        CultureInfo.CurrentUICulture = CultureInfo.DefaultThreadCurrentUICulture;
+        Strings.Culture = CultureInfo.DefaultThreadCurrentUICulture;
+        PluginLog.Debug($"Loaded language: {CultureInfo.DefaultThreadCurrentUICulture}, Client: {ClientState.ClientLanguage}");
+
         pluginCommands = new PluginCommands();
         configWindow = new ConfigWindow();
         mainWindow = new MainWindow();
@@ -59,22 +82,6 @@ public sealed class NecroLens : IDalamudPlugin
 #endif
         PluginInterface.UiBuilder.Draw += DrawUI;
         PluginInterface.UiBuilder.OpenConfigUi += ShowConfigWindow;
-
-        if (Config.Language == "")
-        {
-            CultureInfo.DefaultThreadCurrentUICulture = ClientState.ClientLanguage switch
-            {
-                ClientLanguage.French => CultureInfo.GetCultureInfo("fr"),
-                ClientLanguage.German => CultureInfo.GetCultureInfo("de"),
-                ClientLanguage.Japanese => CultureInfo.GetCultureInfo("ja"),
-                (ClientLanguage)4 => CultureInfo.GetCultureInfo("zh"),
-                _ => CultureInfo.GetCultureInfo("en")
-            };
-        }
-        else
-        {
-            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo(Config.Language);
-        }
     }
 
     public void Dispose()

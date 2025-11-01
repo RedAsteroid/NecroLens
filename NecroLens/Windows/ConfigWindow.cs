@@ -66,6 +66,9 @@ public class ConfigWindow() : Window(Strings.ConfigWindow_Title, ImGuiWindowFlag
                     {
                         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo(conf.Language);
                     }
+
+                    CultureInfo.CurrentUICulture = CultureInfo.DefaultThreadCurrentUICulture;
+                    Strings.Culture = CultureInfo.DefaultThreadCurrentUICulture;
                 }
             }
             ImGui.EndCombo();
