@@ -188,7 +188,7 @@ public class DeepDungeonService : IDisposable
                     {
                         var player = ClientState.LocalPlayer!;
                         var chest = ObjectTable
-                                    .Where(o => o.DataId == DataIds.GoldChest)
+                                    .Where(o => o.BaseId == DataIds.GoldChest)
                                     .FirstOrDefault(o => o.Position.Distance2D(player.Position) <= 4.6f);
                         if (chest != null)
                         {
@@ -246,7 +246,7 @@ public class DeepDungeonService : IDisposable
         foreach (var obj in ObjectTable)
             if (obj.IsValid())
             {
-                var dataId = obj.DataId;
+                var dataId = obj.BaseId;
                 if (DataIds.BronzeChestIDs.Contains(dataId) || DataIds.SilverChest == dataId ||
                     DataIds.GoldChest == dataId || DataIds.AccursedHoardCoffer == dataId)
                 {
