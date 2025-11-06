@@ -83,6 +83,14 @@ public partial class FloorDetails
         {
             var floorText = addon->GetNodeById(26)->ChildNode->PrevSiblingNode->GetAsAtkTextNode()->NodeText.ToString();
             var floor = int.Parse(FloorNumber().Match(floorText).Value);
+
+            PluginLog.Debug($"floor: {floor}, floorText: {floorText}");
+            if (floor == 0)
+            {
+                PluginLog.Debug("Detected floor value 0, skipping update (resource loading in progress)");
+                return; 
+            }
+
             if (CurrentFloor != floor)
             {
                 PluginLog.Information("Floor number mismatch - adjusting");
@@ -156,11 +164,11 @@ public partial class FloorDetails
     public void TrackFloorObjects(ESPObject espObj, int currentContentId)
     {
         if (FloorTransfer
-            || IsIgnored(espObj.GameObject.DataId)
+            || IsIgnored(espObj.GameObject.BaseId)
             || FloorObjects.ContainsKey(espObj.GameObject.EntityId)) return;
 
         var obj = new FloorObject();
-        obj.DataId = espObj.GameObject.DataId;
+        obj.DataId = espObj.GameObject.BaseId;
         if (espObj.GameObject is IBattleNpc npcObj)
         {
             obj.NameId = npcObj.NameId;
