@@ -103,11 +103,11 @@ public partial class FloorDetails
 
     public unsafe int PassageProgress()
     {
-        if (TryGetAddonByName<AtkUnitBase>("DeepDungeonMap", out var addon))
+        if (TryGetAddonByName<AtkUnitBase>("DeepDungeonMap", out var addon) && IsAddonReady(addon))
         {
-            var key = addon->GetNodeById(16)->ChildNode->PrevSiblingNode;
-            var image = key->GetAsAtkComponentNode()->Component->UldManager.NodeList[1]->GetAsAtkImageNode();
-            return image->PartId * 10;
+                var key = addon->GetNodeById(16)->ChildNode->PrevSiblingNode;
+                var image = key->GetAsAtkComponentNode()->Component->UldManager.NodeList[1]->GetAsAtkImageNode();
+                return image->PartId * 10;
         }
 
         return 0;
