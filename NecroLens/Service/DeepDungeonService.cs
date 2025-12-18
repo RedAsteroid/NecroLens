@@ -33,13 +33,13 @@ public class DeepDungeonService : IDisposable
     public readonly Dictionary<Pomander, string> PomanderNames;
     
     private const string ActorControlSig = "E8 ?? ?? ?? ?? 0F B7 0B 83 E9 64";
-    private delegate void ActorControlSelfDelegate(uint category, uint eventId, uint param1, uint param2, uint param3, uint param4, uint param5, uint param6, ulong targetId, byte param7);
+    private delegate void ActorControlSelfDelegate(uint category, uint eventId, uint param1, uint param2, uint param3, ulong param4, uint param5, uint param6, uint targetId, uint param7, uint param8, uint param9);
     private Hook<ActorControlSelfDelegate>? actorControlSelfHook;
     
     
     private const string SystemLogSig = "E8 ?? ?? ?? ?? E9 ?? ?? ?? ?? 0F B6 47 28";
     private Hook<SystemLogMessageDelegate>? systemLogMessageHook;
-    private unsafe delegate void SystemLogMessageDelegate(uint entityId, uint logMessageId, int* args, byte argCount);
+    private unsafe delegate void SystemLogMessageDelegate(uint entityId, uint logMessageId, void* args, uint argCount);
 
     public DeepDungeonService()
     {
@@ -138,10 +138,10 @@ public class DeepDungeonService : IDisposable
         FloorTimes[FloorDetails.CurrentFloor] = time;
     }
 
-    private void ActorControlSelf(uint category, uint eventId, uint param1, uint param2, uint param3, uint param4, uint param5, uint param6, ulong targetId, byte param7)
+    private void ActorControlSelf(uint category, uint eventId, uint param1, uint param2, uint param3, ulong param4, uint param5, uint param6, uint targetId, uint param7, uint param8, uint param9)
     {
-        actorControlSelfHook!.Original(category, eventId, param1, param2, param3, param4, param5, param6, targetId, param7);
-
+        
+        actorControlSelfHook!.Original(category, eventId, param1, param2, param3, param4, param5, param6, targetId, param7, param8, param9);
         if (eventId == 100 && !Ready && DeepDungeonContentInfo.ContentInfo.TryGetValue((int)param2, out var info))
             EnterDeepDungeon((int)param2, info);
 
@@ -149,16 +149,17 @@ public class DeepDungeonService : IDisposable
             FloorDetails.NextFloor();
     }
 
-    private unsafe void SystemLogMessage(uint entityId, uint logId, int* args, byte argCount)
+    private unsafe void SystemLogMessage(uint entityId, uint logMessageId, void* args, uint argCount)
     {
-        systemLogMessageHook!.Original(entityId, logId, args, argCount);
+        systemLogMessageHook!.Original(entityId, logMessageId, args, argCount);
         
         if (InDeepDungeon)
         {
-            switch (logId)
+            switch (logMessageId)
             {
                 case DataIds.SystemLogPomanderUsed:
-                    FloorDetails.OnPomanderUsed((Pomander)args[1]);
+                    var pomanderUsed = (Pomander)((int*)args)[1];
+                    FloorDetails.OnPomanderUsed(pomanderUsed);
                     break;
                 case DataIds.SystemLogDutyEnded:
                     ExitDeepDungeon();
@@ -183,10 +184,10 @@ public class DeepDungeonService : IDisposable
                 case 0x1C36:
                 case 0x23F8:
                     // case 0x282F: // Demiclone
-                    var pomander = (Pomander)args[0];
+                    var pomander = (Pomander)((int*)args)[0];
                     if (pomander > 0)
                     {
-                        var player = ClientState.LocalPlayer!;
+                        var player = ObjectTable.LocalPlayer!;
                         var chest = ObjectTable
                                     .Where(o => o.BaseId == DataIds.GoldChest)
                                     .FirstOrDefault(o => o.Position.Distance2D(player.Position) <= 4.6f);
@@ -218,7 +219,7 @@ public class DeepDungeonService : IDisposable
 
     internal unsafe void TryInteract(ESPObject espObj)
     {
-        var player = ClientState.LocalPlayer!;
+        var player = ObjectTable.LocalPlayer!;
         if ((player.StatusFlags & StatusFlags.InCombat) == 0 && conf.OpenChests && espObj.IsChest())
         {
             var type = espObj.Type;

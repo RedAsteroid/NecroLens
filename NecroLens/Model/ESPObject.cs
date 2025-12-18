@@ -79,7 +79,7 @@ public class ESPObject
         {
             var dataId = gameObject.BaseId;
 
-            if (clientState.LocalPlayer != null && clientState.LocalPlayer.EntityId == gameObject.EntityId)
+            if (ObjectTable.LocalPlayer != null && ObjectTable.LocalPlayer.EntityId == gameObject.EntityId)
                 Type = ESPType.Player;
             else if (DataIds.BronzeChestIDs.Contains(dataId))
                 Type = ESPType.BronzeChest;
@@ -172,7 +172,7 @@ public class ESPObject
 
     public float Distance()
     {
-        return clientState.LocalPlayer != null ? GameObject.Position.Distance2D(clientState.LocalPlayer.Position) : 0;
+        return ObjectTable.LocalPlayer != null ? GameObject.Position.Distance2D(ObjectTable.LocalPlayer.Position) : 0;
     }
 
     public bool IsChest()

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Plugin.Services;
 using NecroLens.Model;
 using NecroLens.util;
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 
 namespace NecroLens.Service;
 
@@ -29,7 +30,7 @@ public class ESPTestService : IDisposable
         if (ShouldDraw())
         {
             var drawList = ImGui.GetBackgroundDrawList();
-            var player = ClientState.LocalPlayer;
+            var player = ObjectTable.LocalPlayer;
             var espObject = new ESPObject(player!);
 
             var onScreen = GameGui.WorldToScreen(player!.Position, out _);
@@ -51,7 +52,7 @@ public class ESPTestService : IDisposable
         return !(Condition[ConditionFlag.LoggingOut] ||
                  Condition[ConditionFlag.BetweenAreas] ||
                  Condition[ConditionFlag.BetweenAreas51]) &&
-               ClientState.LocalPlayer != null &&
-               ClientState.LocalContentId > 0 && ObjectTable.Length > 0;
+               ObjectTable.LocalPlayer != null &&
+               PlayerState.ContentId > 0 && ObjectTable.Length > 0;
     }
 }

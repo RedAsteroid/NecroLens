@@ -192,8 +192,9 @@ public class ESPService : IDisposable
                !(Condition[ConditionFlag.LoggingOut] ||
                  Condition[ConditionFlag.BetweenAreas] ||
                  Condition[ConditionFlag.BetweenAreas51]) &&
-               ClientState is { LocalPlayer: not null, LocalContentId: > 0 }
-                && DeepDungeonUtil.InDeepDungeon;
+                ObjectTable is { LocalPlayer: not null } &&
+                PlayerState is { ContentId: > 0 } &&
+                DeepDungeonUtil.InDeepDungeon;
     }
 
     /**
@@ -229,8 +230,8 @@ public class ESPService : IDisposable
                         DungeonService.TrackFloorObjects(espObj);
                     }
 
-                    if (ClientState.LocalPlayer != null &&
-                        ClientState.LocalPlayer.EntityId == obj.EntityId)
+                    if (ObjectTable.LocalPlayer != null &&
+                        ObjectTable.LocalPlayer.EntityId == obj.EntityId)
                         entityList.Add(new ESPObject(obj));
                 }
 
