@@ -3,7 +3,7 @@
     <PropertyGroup>
         <Authors>Jukka</Authors>
         <DalamudApiLevel>14</DalamudApiLevel>
-        <Version>1.0.8.21</Version>
+        <Version>1.0.8.22</Version>
         <Description>NecroLens Dalamud Plugin</Description>
         <PackageProjectUrl>https://github.com/Jukkales/NecroLens</PackageProjectUrl>
     </PropertyGroup>
@@ -44,7 +44,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="ECommons" Version="3.1.0.2" />
+        <PackageReference Include="ECommons" Version="3.1.0.6" />
         <Reference Include="FFXIVClientStructs">
             <HintPath>$(DalamudLibPath)FFXIVClientStructs.dll</HintPath>
             <Private>false</Private>
@@ -91,7 +91,7 @@
     </ItemGroup>
     
     <ItemGroup>
-      <PackageReference Update="DalamudPackager" Version="14.0.0" />
+      <PackageReference Update="DalamudPackager" Version="14.0.1" />
     </ItemGroup>
 
 </Project>
