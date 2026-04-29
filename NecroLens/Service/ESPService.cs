@@ -46,7 +46,7 @@ public class ESPService : IDisposable
     /**
      * Clears the drawable GameObjects on MapChange.
      */
-    private void OnCleanup(ushort e)
+    private void OnCleanup(uint e)
     {
         Monitor.Enter(mapObjects);
         mapObjects.Clear();

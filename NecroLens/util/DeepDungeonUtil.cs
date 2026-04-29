@@ -13,7 +13,7 @@ namespace NecroLens.util;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 public static class DeepDungeonUtil
 {
-    public static ushort MapId => ClientState.TerritoryType;
+    public static uint MapId => ClientState.TerritoryType;
     public static bool InDeepDungeon => InPotD || InHoH || InEO || InPT;
     public static bool InPotD => DataIds.PalaceOfTheDeadMapIds.Contains(MapId);
     public static bool InHoH => DataIds.HeavenOnHighMapIds.Contains(MapId);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Dalamud.NET.Sdk/14.0.0">
+<Project Sdk="Dalamud.NET.Sdk/14.0.1">
     <PropertyGroup>
         <Authors>Jukka</Authors>
         <DalamudApiLevel>14</DalamudApiLevel>
-        <Version>1.0.8.22</Version>
+        <Version>1.0.8.23</Version>
         <Description>NecroLens Dalamud Plugin</Description>
         <PackageProjectUrl>https://github.com/Jukkales/NecroLens</PackageProjectUrl>
     </PropertyGroup>
@@ -31,7 +31,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
+        <DalamudLibPath>$(appdata)\XIVLauncherCN\addon\Hooks\dev\</DalamudLibPath>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
