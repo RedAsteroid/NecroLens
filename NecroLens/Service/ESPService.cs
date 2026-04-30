@@ -7,7 +7,7 @@ using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
-using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;   
 using NecroLens.Model;
 using NecroLens.util;
 using static NecroLens.util.ESPUtils;
@@ -150,7 +150,7 @@ public class ESPService : IDisposable
 
         if (Config.ShowMobViews &&
             (type == ESPObject.ESPType.Enemy || type == ESPObject.ESPType.Mimic) &&
-            BattleNpcSubKind.Enemy.Equals((BattleNpcSubKind)espObject.GameObject.SubKind) &&
+            BattleNpcSubKind.Combatant.Equals((BattleNpcSubKind)espObject.GameObject.SubKind) &&
             !espObject.InCombat())
         {
             if (conf.ShowPatrolArrow && espObject.IsPatrol())
